@@ -128,6 +128,10 @@ class Renderer {
         let x = [];
         let y = [];
         let interval = 1 / num_edges;
+        if(this.show_points) {
+            this.drawVertex(p1, [100, 100, 100, 255], framebuffer);
+            this.drawVertex(p2, [100, 100, 100, 255], framebuffer);
+        }
 
         for(let i = 0; i < num_edges + 1; i++) {
             x[i] = parseInt(Math.pow((1 - t), 3) * p0.x + 3 * Math.pow((1 -t), 2) * t * p1.x + 3 * (1 - t) * Math.pow(t, 2) * p2.x + Math.pow(t, 3) * p3.x);
@@ -172,6 +176,10 @@ class Renderer {
             if(this.show_points) {
                 this.drawVertex({x: x[i], y: y[i]}, [100, 100, 100, 255], framebuffer);
             }
+        }
+
+        if(this.show_points) {
+            this.drawVertex(center, [100, 100, 100, 255], framebuffer);
         }
 
         for(let i = 0; i < num_edges; i++) {
